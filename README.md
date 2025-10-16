@@ -7,7 +7,7 @@
 <br>
 
 <p align="center">
-  <img src="https://github.com/DCF-2/My-Portifolio/blob/main/assets/img/Captura%20de%20tela%202025-10-15%20212026.png" alt="Demonstração do Portfólio" width="80%">
+  <img src="https://github.com/DCF-2/My-Portifolio/blob/main/assets/img/Meu%20portifolio.png" alt="Demonstração do Portfólio" width="80%">
 </p>
 
 <h2 align="center">✨ Um Cartão de Visitas Digital e Interativo ✨</h2>
