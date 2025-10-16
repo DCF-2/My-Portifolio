@@ -1,0 +1,702 @@
+/* =================== VARIÁVEIS DE ESTILO =================== */
+:root {
+  /* Cores */
+  --bg-dark: hsl(228, 6%, 10%);      /* Fundo principal um pouco azulado */
+  --bg-light-dark: hsl(228, 6%, 14%); /* Fundo dos cards */
+  --border-color: hsl(228, 6%, 22%);     /* Cor da borda */
+  --text-white: hsl(0, 0%, 98%);       /* Texto branco */
+  --text-gray: hsl(0, 0%, 84%);        /* Texto cinza claro */
+
+  /* Novas cores baseadas no Java */
+  --java-blue: #007396;
+  --java-orange: #f8981d;
+
+  /* Fontes */
+  --ff-poppins: 'Poppins', sans-serif;
+
+  /* Transições */
+  --transition-1: 0.25s ease;
+  --transition-2: 0.5s ease-in-out;
+}
+
+/* =================== RESET BÁSICO =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--ff-poppins);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-white);
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =================== NOVO LAYOUT PRINCIPAL =================== */
+main {
+  max-width: 900px; /* Largura máxima do conteúdo */
+  margin: 40px auto; /* Centraliza na página com margem no topo/baixo */
+  padding: 0 15px;
+}
+
+/* O sidebar agora se torna o cabeçalho do portfólio */
+.sidebar {
+  background: var(--bg-light-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px; /* Espaço entre o topo e o conteúdo principal */
+}
+
+.main-content {
+  background: var(--bg-light-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px;
+  min-height: 80vh; /* Altura mínima para preencher a tela */
+}
+
+/* =================== ESTILOS DA SIDEBAR (AGORA HEADER) =================== */
+.sidebar-info {
+  display: flex;
+  align-items: center; /* Alinha itens verticalmente */
+  gap: 25px;
+}
+
+.avatar-box {
+  background: linear-gradient(to bottom right, var(--java-blue), var(--java-orange));
+  border-radius: 50%;
+  padding: 4px; /* Cria o efeito de borda gradiente */
+  flex-shrink: 0; /* Impede que a foto encolha */
+  transition: transform var(--transition-1);
+}
+
+.avatar-box:hover {
+    transform: scale(1.05); /* Efeito de zoom sutil */
+}
+
+.avatar-box img {
+  width: 120px;
+  height: 120px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--bg-light-dark); /* Borda interna para separar do gradiente */
+}
+
+.info-content .name {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.info-content .title {
+  background: var(--bg-dark);
+  color: var(--java-orange); /* COR ALTERADA */
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 15px;
+  border-radius: 8px;
+  display: inline-block; /* Permite o padding funcionar corretamente */
+  margin-top: 8px;
+}
+
+/* O botão de contatos foi removido para uma UI mais limpa, vamos adicionar os contatos diretamente */
+
+/* =================== NAVBAR =================== */
+.navbar {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color); /* Linha divisória */
+}
+
+.navbar-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.navbar-link {
+  color: var(--text-gray);
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 10px; /* Aumenta o espaço para o sublinhado */
+  position: relative; /* Necessário para o pseudo-elemento ::after */
+  transition: var(--transition-1);
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; /* Posiciona logo abaixo do link, sobre a borda da navbar */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--java-blue);
+    transform: scaleX(0); /* Começa invisível */
+    transform-origin: left;
+    transition: transform var(--transition-1);
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--java-blue); /* COR ALTERADA */
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+    transform: scaleX(1); /* Expande a linha no hover/ativo */
+}
+
+/* =================== ESTILOS DO CONTEÚDO =================== */
+.article-title {
+  position: relative;
+  font-size: 32px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.article-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 5px;
+  background: linear-gradient(to right, var(--java-orange), var(--java-blue));
+  border-radius: 3px;
+}
+
+.about-text p {
+  color: var(--text-gray);
+  line-height: 1.; /* Aumenta o espaçamento entre linhas para melhor leitura */
+}
+
+/* =================== ESTILOS DOS CONTATOS NA SIDEBAR =================== */
+.sidebar-contacts {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  background: var(--border-color);
+  margin: 15px 0;
+}
+
+.contacts-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna por padrão */
+  gap: 15px;
+  list-style: none;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0; /* Previne que o conteúdo flexível estoure */
+}
+
+.icon-box {
+  background: linear-gradient(to bottom right, var(--java-orange), var(--java-blue));
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--text-white);
+  flex-shrink: 0;
+}
+
+.contact-info {
+  text-align: left;
+  overflow: hidden; /* Garante que o texto não vaze */
+}
+
+.contact-title {
+  color: var(--text-gray);
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.contact-link {
+  color: var(--text-white);
+  font-size: 14px;
+  font-weight: 300;
+  white-space: nowrap; /* Impede que o link quebre linha */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
+}
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+}
+
+.social-link {
+  color: var(--text-gray);
+  font-size: 20px;
+  transition: var(--transition-1);
+}
+
+.social-link:hover {
+  color: var(--java-blue);
+}
+
+/* =================== ESTILOS DA SEÇÃO "O QUE EU FAÇO" =================== */
+.service {
+  margin-top: 30px;
+}
+
+.service-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas */
+  gap: 20px;
+  list-style: none;
+}
+
+.service-item {
+  background: var(--bg-dark); /* Fundo um pouco mais escuro que o card principal */
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: var(--transition-1);
+}
+
+.service-item:hover {
+  border-color: var(--java-blue);
+  transform: translateY(-5px); /* Efeito de elevação */
+}
+
+.service-icon-box {
+  background: none; /* Remove o fundo do ícone que tínhamos antes */
+  font-size: 32px;
+  color: var(--java-orange);
+}
+
+.service-item-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-white);
+}
+
+.service-item-text {
+  color: var(--text-gray);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =================== ESTILOS DA SEÇÃO "CURRÍCULO" =================== */
+
+/* Layout da Linha do Tempo (Timeline) */
+.timeline {
+  margin-bottom: 30px;
+}
+
+.timeline .title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.timeline .title-wrapper .h3 {
+  font-size: 24px;
+}
+
+.timeline-list {
+  font-size: 15px;
+  margin-left: 45px;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.timeline-item-title {
+  font-size: 16px;
+  line-height: 1.3;
+  margin-bottom: 7px;
+  font-weight: 500;
+}
+
+.timeline-list span {
+  color: var(--java-orange);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Linha vertical da timeline */
+.timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -30px;
+  width: 1px;
+  height: calc(100% + 50px);
+  background: var(--border-color);
+}
+
+/* Círculo da timeline */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -33px;
+  height: 8px;
+  width: 8px;
+  background: linear-gradient(to right, var(--java-orange), var(--java-blue));
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--bg-light-dark); /* Cria um "buraco" na linha */
+}
+
+.timeline-text {
+  color: var(--text-gray);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Seção de Habilidades (Skills) */
+.skill {
+  margin-top: 30px;
+}
+
+.skills-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas */
+  gap: 20px 30px;
+  list-style: none;
+}
+
+.skills-item .title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.skills-item .h5,
+.skills-item data {
+  color: var(--text-gray);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.skill-progress-bg {
+  background: var(--border-color);
+  width: 100%;
+  height: 8px;
+  border-radius: 10px;
+}
+
+.skill-progress-fill {
+  background: linear-gradient(to right, var(--java-orange), var(--java-blue));
+  height: 100%;
+  border-radius: inherit;
+}
+
+/* =================== CONTROLE DE VISIBILIDADE DAS PÁGINAS =================== */
+article {
+  display: none; /* Esconde todas as 'pages' por padrão */
+  animation: fadeIn 0.5s ease; /* Efeito de transição suave */
+}
+
+article.active {
+  display: block; /* Mostra APENAS a página que está ativa */
+}
+
+/* Animação para a troca de página */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* =================== ESTILOS DA SEÇÃO "PORTFÓLIO" =================== */
+.projects {
+  margin-top: 30px;
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grade responsiva */
+  gap: 30px;
+  list-style: none;
+}
+
+.project-item a {
+  display: block;
+  height: 100%;
+}
+
+.project-img {
+  position: relative; /* Necessário para o ícone sobreposto */
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden; /* Garante que a imagem não saia da borda arredondada */
+  margin-bottom: 15px;
+  background: var(--border-color);
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-2);
+}
+
+.project-item a:hover .project-img img {
+  transform: scale(1.1); /* Efeito de zoom na imagem */
+}
+
+/* Ícone de link que aparece no hover */
+.project-item-icon-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: hsla(0, 0%, 100%, 0.1);
+  backdrop-filter: blur(5px);
+  color: var(--text-white);
+  font-size: 24px;
+  padding: 18px;
+  border-radius: 12px;
+  opacity: 0;
+  transition: var(--transition-1);
+  z-index: 1;
+}
+
+.project-item a:hover .project-item-icon-box {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.project-title {
+  color: var(--text-white);
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  transition: color var(--transition-1);
+}
+
+.project-item a:hover .project-title {
+  color: var(--java-blue);
+}
+
+.project-category {
+  color: var(--text-gray);
+  font-size: 14px;
+}
+
+/* =================== ESTILOS DA SEÇÃO "CONTATO" =================== */
+.contact-form {
+  margin-top: 30px;
+}
+
+.form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dois campos por linha */
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--bg-dark);
+  color: var(--text-white);
+  font-size: 15px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  outline: none; /* Remove a borda padrão do navegador */
+  transition: border-color var(--transition-1);
+}
+
+.form-input::placeholder {
+  color: var(--text-gray);
+}
+
+.form-input:focus {
+  border-color: var(--java-blue);
+}
+
+/* Estilo específico para a caixa de mensagem */
+textarea.form-input {
+  grid-column: 1 / -1; /* Faz a textarea ocupar a largura total */
+  min-height: 120px;
+  resize: vertical; /* Permite redimensionar verticalmente */
+  margin-bottom: 25px;
+}
+
+/* Estilo do botão de envio */
+.form-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 20px;
+  background: linear-gradient(to right, var(--java-orange), var(--java-blue));
+  color: var(--text-white);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-1);
+}
+
+.form-btn:hover {
+  opacity: 0.8;
+}
+
+/* Estilo do botão desabilitado */
+.form-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =================== MEDIA QUERIES (RESPONSIVIDADE) =================== */
+
+/**
+ * Para telas médias - Tablets (largura máxima de 992px)
+ */
+@media (max-width: 992px) {
+  /* Torna as grades de duas colunas em uma única coluna */
+  .service-list,
+  .skills-list,
+  .project-list,
+  .input-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/**
+ * Para telas pequenas - Celulares (largura máxima de 768px)
+ */
+@media (max-width: 768px) {
+  /* Ajusta o layout principal para telas pequenas */
+  main {
+    margin: 20px auto;
+    padding: 0 10px;
+    /* Remove a estrutura de flexbox para empilhar os elementos */
+    display: block;
+  }
+
+  .sidebar,
+  .main-content {
+    width: 100%; /* Fazem os cards ocuparem a largura total */
+    padding: 20px;
+    position: static; /* Remove o 'position: sticky' da antiga sidebar */
+  }
+
+  /* Adapta o cabeçalho para o formato vertical */
+  .sidebar-info {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .info-content {
+      text-align: center;
+  }
+
+  .info-content .name {
+    font-size: 26px;
+  }
+
+  /* Ajusta a barra de navegação */
+  .navbar-list {
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-link {
+    font-size: 14px;
+  }
+
+  .article-title {
+    font-size: 28px;
+  }
+}
+
+/**
+ * Para telas muito pequenas (largura máxima de 480px)
+ */
+@media (max-width: 480px) {
+  .avatar-box img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .info-content .name {
+    font-size: 22px;
+  }
+  
+  .contacts-list {
+      grid-template-columns: 1fr; /* Garante uma coluna nos contatos */
+      gap: 10px;
+  }
+
+  .contact-item {
+      gap: 10px;
+  }
+
+  .icon-box {
+      padding: 8px;
+      font-size: 16px;
+  }
+
+  .contact-link {
+      font-size: 13px;
+  }
+}

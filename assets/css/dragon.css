@@ -1,0 +1,20 @@
+/* Estilos para a animação do dragão como fundo */
+
+#dragon-canvas {
+  position: fixed; /* Fica fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2; /* Posição mais ao fundo, atrás das decorações */
+  pointer-events: none; /* Impede que o dragão bloqueie cliques no conteúdo */
+  filter: sepia(20%) opacity(0.7); /* Efeito para integrar melhor ao design */
+}
+
+/* Esconde as definições do SVG para não ocuparem espaço */
+#svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
