@@ -46,7 +46,7 @@ Este projeto foi construído utilizando as seguintes tecnologias:
 
 Você pode visualizar o site no ar através do link abaixo:
 
-**[https://dcf-2.github.io/](https://dcf-2.github.io/)**
+**[https://dcf-2.github.io/My-Portifolio/](https://dcf-2.github.io/My-Portifolio/)**
 
 *(Lembre-se de substituir o link acima pelo link real do seu GitHub Pages quando estiver publicado.)*
 
